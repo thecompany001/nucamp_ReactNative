@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'react-native-elements';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, Text } from 'react-native';
 
 class Contact extends Component {
 
