@@ -22,7 +22,7 @@ function RenderCampsite({campsite}) {
 class CampsiteInfo extends Component {
 
     constructor(props) {
-        super(props);
+        (props);
         this.state = {
             campsites: CAMPSITES
         };
