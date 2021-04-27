@@ -234,8 +234,8 @@ const MainNavigator = createDrawerNavigator(
         Favorites: {
             screen: FavoritesNavigator,
             navigationOptions: {
-                drawerLabel: 'My FavoritesCampsite',
-                drawerIcon: ({ tintColor }) => (
+                drawerLabel: 'My Favorites',
+                drawerIcon: ({tintColor}) => (
                     <Icon
                         name='heart'
                         type='font-awesome'
