@@ -7,7 +7,8 @@ import Contact from './ContactComponent';
 import Reservation from './ReservationComponent';
 import Favorites from './FavoriteComponent';
 import Login from './LoginComponent';
-import { View, Platform, StyleSheet, Text, ScrollView, Image } from 'react-native';
+import { View, Platform, StyleSheet, Text, ScrollView, Image,
+    Alert, ToastAndroid } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
@@ -16,6 +17,7 @@ import { Icon } from 'react-native-elements';
 import SafeAreaView from 'react-native-safe-area-view';
 import { connect } from 'react-redux';
 import { fetchCampsites, fetchComments, fetchPromotions, fetchPartners } from '../redux/ActionCreators';
+import NetInfo from '@react-native-community/netinfo';
 
 
 const mapDispatchToProps = {
@@ -327,6 +329,13 @@ class Main extends Component {
         this.props.fetchComments();
         this.props.fetchPromotions();
         this.props.fetchPartners();
+
+        NetInfo.fetch().then(connectionInfo => {
+            (Platform.OS === 'ios')
+                ? Alert.alert('Initial Network Connectivity Type:', connectionInfo)
+                : ToastAndroid.show('Initial Network Connectivity Type: ') +
+                    connectionInfo.type, ToastAndroid.LONG);
+        });
     }
 
     render() {
